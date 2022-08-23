@@ -496,8 +496,10 @@ def generate_replication_slot_name(dbname, tap_id=None, prefix='pipelinewise'):
     return re.sub('[^a-z0-9_]', '_', slot_name)
 
 def locate_replication_slot_by_cur(cursor, dbname, tap_id=None):
-    slot_name_v15 = generate_replication_slot_name(dbname, prefix="stitch")
-    slot_name_v16 = generate_replication_slot_name(dbname, tap_id, prefix="stitch")
+    # slot_name_v15 = generate_replication_slot_name(dbname, prefix="stitch")
+    slot_name_v15 = "stitch"
+    # slot_name_v16 = generate_replication_slot_name(dbname, tap_id, prefix="stitch")
+    slot_name_v16 = "stitch"
 
     # Backward compatibility: try to locate existing v15 slot first. PPW <= 0.15.0
     cursor.execute(f"SELECT * FROM pg_replication_slots WHERE slot_name = '{slot_name_v15}'")
