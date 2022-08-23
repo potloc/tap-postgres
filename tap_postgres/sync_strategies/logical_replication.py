@@ -490,7 +490,7 @@ def generate_replication_slot_name(dbname, tap_id=None, prefix='pipelinewise'):
     else:
         tap_id = ''
 
-    slot_name = f'{prefix}_{dbname}{tap_id}'.lower()
+    slot_name = f'{prefix}{tap_id}'.lower()
 
     # Replace invalid characters to ensure replication slot name is in accordance with Postgres spec
     return re.sub('[^a-z0-9_]', '_', slot_name)
